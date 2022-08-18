@@ -1,0 +1,22 @@
+a {
+    color: #fff;
+    text-decoration: none;
+}
+.form-group {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  label {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .form-control {
+    font-size: 16px;
+    color: #666;
+    height: 45px;
+  }
+ 
+.navbar {
+     border-radius: 0px; 
+}

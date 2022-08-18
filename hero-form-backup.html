@@ -1,0 +1,383 @@
+<div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+       
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div>
+          <ul class="navbar-nav me-auto mb-2 mb-md-0" id="navBarList">
+            
+            <li> 
+              <div class="d-flex">
+                
+              <input value="{{model.utmLink()}}" title="{{model.utmLink()}}" class="form-control me-2" type="text" readonly [(ngModel)]="hyperlink" name="hyperlink" #inputTarget id="utmLinkReadonly">
+              
+              
+            </div></li></ul></div>
+            </div>
+            
+            <br />
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <div class="d-flex">
+              <li class="nav-item butnListItem">
+                <button type="button" class="btn btn-outline-secondary" (click)="newHero()" *ngIf="baseUrl.dirty || heroForm.form.touched">Reset</button>
+                </li>
+            <li class="nav-item butnListItem"><button [ngxClipboard]="inputTarget" value="click to copy" class="btn btn-outline-success" [disabled]="!heroForm.form.valid">Copy</button></li>
+           </div>
+    
+          </ul>
+     
+    </nav></div>
+    <div class="container">
+      <p>&nbsp;</p>
+      
+      <div>
+        
+          <div class="py-5 text-center">
+           <br />
+           <h1>DGT UTM Generator</h1>
+           
+           <p class="lead">Enter a base url to begin building a new UTM code</p>
+        <form (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">
+          <div class="container">
+            <div class="row">
+              <div class="form-group">
+                <label for="baseUrl"><span>Enter domain (base url, example https://www.hach.com )</span> <span [hidden]="baseUrl.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a base url</span></label>
+                <input value="{{model.baseUrl}}" 
+                class="form-control me-2" 
+                type="text" 
+                [(ngModel)]="model.baseUrl" 
+                name="baseUrl"
+                (keydown.space)="$event.preventDefault();" 
+                id="baseUrl"
+                minlength="1"
+                name="baseUrl"
+                (ngModelChange)="ConvertToLower($event, 'baseUrl')" 
+                required 
+                #baseUrl="ngModel"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="none"
+                spellcheck="false"
+                (paste) = "onPasteBaseUrl($event)">
+                
+                
+                
+      
+              </div>
+              <!-- <div [hidden]="baseUrl.valid" 
+              ng-show="form.baseUrl.$error.pattern" 
+              class="alert alert-danger">Base url required
+              <div *ngIf="baseUrl.errors?.['minlength']"
+            class="alert alert-danger">Entry at least 1 character
+            </div>
+            
+          </div> -->
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+          <div class="form-group">
+            <label for="opcoName">1. OpCo <span [hidden]="opcoName.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique; margin-left: 25px;">  Enter an OpCo</span></label>
+            <select class="form-control" 
+                    id="opcoName"
+                    name="opcoName"
+                    required
+                    [(ngModel)]="model.opcoName" 
+                    #opcoName="ngModel"
+                    (change)="changeWebsite(opcoName.value)">
+              <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let opco of opcos" [value]="opco">{{opco}}</option>
+            </select>
+            
+          </div> 
+          
+          <div *ngIf="initialView">
+          <div class="form-group">
+            <label for="campaign">2. Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+            <select class="form-control" id="campaignInitial"
+                    required
+                    [(ngModel)]="model.campaign" name="campaign"
+                    #campaign="ngModel">
+                    <option value="" disabled selected> Opco choice generates a list of campaigns... </option>
+              <option *ngFor="let campaign of campaigns" [value]="campaign">{{campaign}}</option>
+            </select>
+           
+          </div></div>
+         
+    
+          <div *ngIf="opcoSelectedHach" class="campaigns">
+          <div class="form-group">
+            <label for="campaign">2. Hach Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+            <select class="form-control" id="campaignHach"
+                    required
+                    [(ngModel)]="model.campaign" name="campaign"
+                    #campaign="ngModel"
+                    (change)="changeWebsite(campaign.value)">
+                    <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let campaign of hachCodes" [value]="campaign">{{campaign}}</option>
+              
+            </select>
+          
+          </div>
+        </div>
+    
+        <div *ngIf="opcoSelectedAqua" class="campaigns">
+          <div class="form-group">
+            <label for="campaign">2. Aquafine Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+            <select class="form-control" id="campaignAqua"
+                    required
+                    [(ngModel)]="model.campaign" name="campaign"
+                    #campaign="ngModel">
+                    <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let campaign of aquaCodes" [value]="campaign">{{campaign}}</option>
+            </select>
+            
+          </div>
+        </div>
+        
+        <div *ngIf="opcoSelectedEts" class="campaigns">
+          <div class="form-group">
+            <label for="campaign">2. Ets Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+            <select class="form-control" id="campaignEts"
+                    required
+                    [(ngModel)]="model.campaign" name="campaign"
+                    #campaign="ngModel">
+                    <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let campaign of etsCodes" [value]="campaign">{{campaign}}</option>
+            </select>
+            
+          </div>
+        </div>
+    
+          <div *ngIf="opcoSelectedHex" class="campaigns">
+            <div class="form-group">
+              <label for="campaign">2. Hex Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+              <select class="form-control" id="campaignHex"
+                      required
+                      [(ngModel)]="model.campaign" name="campaign"
+                      #campaign="ngModel">
+                      <option value="" disabled selected> Choose... </option>
+                <option *ngFor="let campaign of hexCodes" [value]="campaign">{{campaign}}</option>
+              </select>
+              
+            </div>
+          </div>
+    
+          <div *ngIf="opcoSelectedMcc" class="campaigns">
+            <div class="form-group">
+              <label for="campaign">2. McCrometer Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+              <select class="form-control" id="campaignMcc"
+                      required
+                      [(ngModel)]="model.campaign" name="campaign"
+                      #campaign="ngModel">
+                      <option value="" disabled selected> Choose... </option>
+                <option *ngFor="let campaign of mccCodes" [value]="campaign">{{campaign}}</option>
+              </select>
+              
+            </div>
+          </div>
+    
+          <div *ngIf="opcoSelectedOtt" class="campaigns">
+            <div class="form-group">
+              <label for="campaign">2. Ott Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+              <select class="form-control" id="campaignOtt"
+                      required
+                      [(ngModel)]="model.campaign" name="campaign"
+                      #campaign="ngModel">
+                      <option value="" disabled selected> Choose... </option>
+                <option *ngFor="let campaign of mccCodes" [value]="campaign">{{campaign}}</option>
+              </select>
+              
+            </div>
+          </div>
+    
+          <div *ngIf="opcoSelectedPall" class="campaigns">
+            <div class="form-group">
+              <label for="campaign">2. Pall Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+              <select class="form-control" id="campaignPall"
+                      required
+                      [(ngModel)]="model.campaign" name="campaign"
+                      #campaign="ngModel">
+                      <option value="" disabled selected> Choose... </option>
+                <option *ngFor="let campaign of pallCodes" [value]="campaign">{{campaign}}</option>
+              </select>
+              
+            </div>
+          </div>
+    
+          <div *ngIf="opcoSelectedSeabird" class="campaigns">
+            <div class="form-group">
+              <label for="campaign">2. Seabird Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+              <select class="form-control" id="campaignSeabird"
+                      required
+                      [(ngModel)]="model.campaign" name="campaign"
+                      #campaign="ngModel">
+                      <option value="" disabled selected> Choose... </option>
+                <option *ngFor="let campaign of seabirdCodes" [value]="campaign">{{campaign}}</option>
+              </select>
+              
+            </div>
+          </div>
+    
+          <div *ngIf="opcoSelectedTroj" class="campaigns">
+            <div class="form-group">
+              <label for="campaign">2. Trojan Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+              <select class="form-control" id="campaignTroj"
+                      required
+                      [(ngModel)]="model.campaign" name="campaign"
+                      #campaign="ngModel">
+                      <option value="" disabled selected> Choose... </option>
+                <option *ngFor="let campaign of trojCodes" [value]="campaign">{{campaign}}</option>
+              </select>
+              
+            </div>
+          </div>
+    
+          <div *ngIf="opcoSelectedViqua" class="campaigns">
+            <div class="form-group">
+              <label for="campaign">2. Viqua Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+              <select class="form-control" id="campaignViqua"
+                      required
+                      [(ngModel)]="model.campaign" name="campaign"
+                      #campaign="ngModel">
+                      <option value="" disabled selected> Choose... </option>
+                <option *ngFor="let campaign of viquaCodes" [value]="campaign">{{campaign}}</option>
+              </select>
+              
+            </div>
+          </div>
+    
+          <div *ngIf="opcoSelectedXos" class="campaigns">
+            <div class="form-group">
+              <label for="campaign">2. XOS Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+              <select class="form-control" id="campaignXos"
+                      required
+                      [(ngModel)]="model.campaign" name="campaign"
+                      #campaign="ngModel">
+                      <option value="" disabled selected> Choose... </option>
+                <option *ngFor="let campaign of xosCodes" [value]="campaign">{{campaign}}</option>
+              </select>
+              
+            </div>
+          </div>
+    
+        
+    
+          <div class="form-group">
+            <label for="medium">3. Define MEDIUM used to distribute link<span [hidden]="medium.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a medium</span><br /><span>NEW: "Social-paid" for paid ads in Social Media. Be sure to define the social network in point 5 below.</span></label>
+            <select class="form-control" id="medium"
+                    required
+                    [(ngModel)]="model.medium" name="medium"
+                    #medium="ngModel">
+                    <option value="" disabled selected="selected">Choose... </option>
+              <option *ngFor="let medium of mediums" [value]="medium">{{medium}}</option>
+             
+            </select>
+            
+          </div></div></div>
+    
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="date">4. Define year and week in which link hits the market
+                  <span [hidden]="date.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Define year and week</span><br /><span>Date format: YYWW</span></label>
+                  <select class="form-control" id="date"
+                          required
+                          [(ngModel)]="model.date" name="date"
+                          #date="ngModel">
+                          <option value="" disabled selected="selected">Choose... </option>
+                    <option *ngFor="let date of dates" [value]="date">{{date}}</option>
+                  </select>
+                  <!-- <div [hidden]="date.valid" class="alert alert-danger">
+                    Date is required
+                  </div> -->
+                </div>
+              </div></div></div>
+              <div class="container">
+                <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="source"><span style="color: red;font-size:large;font-weight:900;"> * </span>5. <span>SOURCE - Twitter, Water-Online, etc. (free text, no spaces)</span>
+                  <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+                  <input type="text" 
+                  ng-pattern-restrict="^[a-z0-9_-]*$" 
+                  (keypress)="omitSpecialChar($event)" 
+                  (keydown.space)="$event.preventDefault();" 
+                  (paste) = "onPaste($event, 'source')"
+                  class="form-control" id="source"
+                  [(ngModel)]="model.source"
+                  minlength="1"
+                  name="source"
+                  (ngModelChange)="ConvertToLower($event, 'source')" 
+                  required 
+                  #source="ngModel"
+                  autocomplete="off"
+                  autocorrect="off"
+                  autocapitalize="none"
+                  spellcheck="false">
+                </div>
+                <!-- <div [hidden]="source.valid" 
+                  ng-show="form.source.$error.pattern" 
+                  class="alert alert-danger">Source required
+                  <div *ngIf="source.errors?.['minlength']"
+                class="alert alert-danger">Entry at least 1 character
+                </div>
+                
+              </div> -->
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="optA"><span style="color: red;font-size:large;font-weight:900;"> * </span><span>Content: Short detail on content of tactic (free text, no spaces) - Optional</span></label>
+                  <input type="text" 
+                  class="form-control" 
+                  id="optA"
+                  [(ngModel)]="model.optA" 
+                  name="optA" 
+                  (ngModelChange)="ConvertToLower($event, 'optA')" 
+                  (keydown.space)="$event.preventDefault();"
+                  ng-pattern-restrict="^[a-z0-9_-]*$" 
+                  (keypress)="omitSpecialChar($event)" 
+                  (paste) = "onPaste($event, 'optA')"
+                  autocomplete="off"
+           autocorrect="off"
+           autocapitalize="none"
+           spellcheck="false">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="optB"><span style="color: red;font-size:large;font-weight:900;"> * </span><span>Campaign Detail: Additional campaign specifics (free text, no spaces) - Optional</span></label>
+                  <input type="text" 
+                  class="form-control" 
+                  id="optB"
+                  [(ngModel)]="model.optB" 
+                  name="optB" 
+                  (ngModelChange)="ConvertToLower($event, 'optB')" 
+                  (keydown.space)="$event.preventDefault();"
+                  ng-pattern-restrict="^[a-z0-9_-]*$" 
+                  (keypress)="omitSpecialChar($event)" 
+                  (paste) = "onPaste($event, 'optB')"
+                  autocomplete="off"
+           autocorrect="off"
+           autocapitalize="none"
+           spellcheck="false">
+                </div>
+              </div>
+             
+            </div>
+            <div class="row">
+              <div class="col" style="text-align: left;">
+            <span style="color: red;font-weight: 500; margin-top: -10px;font-size:medium;"> * </span><span style="color: red;font-size:small;font-weight: 500;">Use alphanumeric values, only (except "_" or "-")</span>
+            </div></div>
+          </div>
+         <br />
+         
+         
+        </form>
+      </div>
+    </div>
