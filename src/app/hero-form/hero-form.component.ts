@@ -28,15 +28,16 @@ export class HeroFormComponent {
   public mediums = ["banner", "cpc", "email","microsite", "podcast", "pr", "qr", "social", "social-paid"];
   public dates = ["2201", "2202", "2203","2204", "2205", "2206", "2207", "2208", "2209", "2210", "2211", "2211", "2212", "2213", "2214", "2215", "2216", "2217", "2218", "2219", "2220", "2221", "2222", "2223", "2224", "2225", "2226", "2227", "2228", "2229", "2230", "2231", "2232", "2233", "2234", "2235", "2236", "2237", "2238", "2239", "2240", "2241", "2242", "2243", "2244", "2245", "2246", "2247", "2248", "2249", "2250", "2251", "2252", "2253", "2301", "2302", "2303", "2304", "2305", "2306", "2307", "2308", "2309", "2310"];
 
-  public model = new Hero('https://www.example.com', '', '', '', '', '', '', '', '');
+  public model = new Hero('https://www.example.com', '', '', '', '', '', '?', '', '', '');
   public regexWhitespace = /\s/;
   public hyperlink: string | undefined;
   public regex = new RegExp('^[a-z0-9_-]+$');
   public pastedText: string | undefined;
   public temp: boolean | undefined;
+  
 
   constructor( public _toastr: ToastrService) {}
-
+  
   onSubmit(form: NgForm) { 
     if(form.valid){
      //window.open(this.model.utmLink());
@@ -72,7 +73,7 @@ onPasteBaseUrl(event: any){
      if(!this.regexWhitespace.test(this.pastedText)){
       return true;
      }else if(this.regexWhitespace.test(this.pastedText)){
-      this._toastr.error("Url can not contain spaces.");
+      this._toastr.error("Cannot contain spaces. Please check the URL and try again.");
      return false;
   }
 }
@@ -82,7 +83,7 @@ return;
 FreeOfWhiteSpace(event: string){
 
   if(this.regexWhitespace.test(event)){
-    this._toastr.error("Spaces not allowed.")   
+    this._toastr.error("Spaces not allowed. Please try again.")   
 }
 
 }
@@ -97,9 +98,15 @@ ConvertToLower(event: string, input: string) {
   if(input == 'optB') 
     this.model.optB = event.toLowerCase();
     //this.FreeOfWhiteSpace(event);
-    if(input == 'baseUrl') 
-    this.model.baseUrl = event.toLowerCase();
-    //this.FreeOfWhiteSpace(event);
+   
+}
+
+CheckForQuestionMarks(event: string, input: string){
+  if(input.indexOf('?') != -1){
+    this.model.questionMarkOrAmpersand = '&';
+  }else{
+    this.model.questionMarkOrAmpersand = '?';
+  }
 }
   
 omitSpecialChar(event: { charCode: any; }){

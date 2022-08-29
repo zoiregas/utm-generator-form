@@ -51,7 +51,7 @@
             id="baseUrl"
             minlength="1"
             name="baseUrl"
-            (ngModelChange)="ConvertToLower($event, 'baseUrl')" 
+            (ngModelChange)="CheckForQuestionMarks($event, baseUrl.value)"
             required 
             #baseUrl="ngModel"
             autocomplete="off"
