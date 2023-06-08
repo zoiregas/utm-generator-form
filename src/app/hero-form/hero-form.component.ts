@@ -18,7 +18,7 @@ export class HeroFormComponent {
   public etsCodes = ["aqua", "dpd"];
   public hachCodes = ["c-bev", "c-chem", "c-dicom", "c-dist", "c-dw", "c-ecp", "c-flow", "c-food", "c-ind", "c-loc", "c-mult", "c-north", "c-pwr", "c-soft", "c-south", "c-termo", "c-voc", "c-web", "c-ww"];
   public hexCodes = ["c-loc", "c-bev", "c-chem", "cw-ww", "c-ecp", "c-env", "c-food", "c-indo", "c-pha", "c-pnp", "c-sna"];
-  public mccCodes = ["c-ag", "c-ind", "cw-muni", "c-ong", "c-steam", "c-tele"];
+  public mccCodes = ["c-ag", "c-ind", "c-mult", "cw-muni", "c-ong", "c-steam", "c-tele"];
   public ottCodes = ["c-aquarius", "c-brand", "c-eco", "c-erm", "c-ermaqi", "c-flood", "c-floodaqi","c-hydro", "c-hydroandmet", "c-met", "c-multi", "c-road", "c-smp", "c-smp15", "c-solared", "c-solarepc", "c-solargen", "c-swq", "c-ufw"];
   public pallCodes = ["c-amsc", "c-con", "c-congol", "c-conun", "c-dpr", "c-ind", "c-indi", "c-indmo", "c-min", "c-mobwater", "c-muni", "c-munmob", "c-serv", "c-wbnr"];
   public seabirdCodes = ["c-argo", "c-auvrov", "c-brand", "c-eco", "c-is", "c-moor", "c-mult", "c-ooxx", "c-ph", "c-radio", "c-sbe", "c-serv"];
