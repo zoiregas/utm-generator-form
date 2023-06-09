@@ -22,12 +22,16 @@ export class HeroFormComponent {
   public ottCodes = ["c-aquarius", "c-brand", "c-eco", "c-erm", "c-ermaqi", "c-flood", "c-floodaqi","c-hydro", "c-hydroandmet", "c-met", "c-multi", "c-road", "c-smp", "c-smp15", "c-solared", "c-solarepc", "c-solargen", "c-swq", "c-ufw"];
   public pallCodes = ["c-amsc", "c-con", "c-congol", "c-conun", "c-dpr", "c-ind", "c-indi", "c-indmo", "c-min", "c-mobwater", "c-muni", "c-munmob", "c-serv", "c-wbnr"];
   public seabirdCodes = ["c-argo", "c-auvrov", "c-brand", "c-eco", "c-is", "c-moor", "c-mult", "c-ooxx", "c-ph", "c-radio", "c-sbe", "c-serv"];
-  public trojCodes = ["c-amps", "c-dw", "c-ect", "c-serv", "c-wwchl", "c-wwgreen", "c-wwreuse", "c-wwuv"];
+  public trojCodes = ["c-amps", "c-dw", "c-ect", "c-mult", "c-serv", "c-wwchl", "c-wwgreen", "c-wwreuse", "c-wwuv"];
   public viquaCodes = ["c-deal", "c-end", "c-eng", "c-home", "c-hosp", "c-lc", "c-mult", "c-oem", "c-prof", "c-sev", "c-singt", "c-ws", "c-wti", "c-ret"];
   public xosCodes = ["c-cp", "c-oem", "c-petro", "c-water"];
   public mediums = ["banner", "blog", "cpc", "email","microsite", "podcast", "pr", "qr", "social", "social-paid"];
-  public dates = ["2201", "2202", "2203","2204", "2205", "2206", "2207", "2208", "2209", "2210", "2211", "2211", "2212", "2213", "2214", "2215", "2216", "2217", "2218", "2219", "2220", "2221", "2222", "2223", "2224", "2225", "2226", "2227", "2228", "2229", "2230", "2231", "2232", "2233", "2234", "2235", "2236", "2237", "2238", "2239", "2240", "2241", "2242", "2243", "2244", "2245", "2246", "2247", "2248", "2249", "2250", "2251", "2252", "2253", "2301", "2302", "2303", "2304", "2305", "2306", "2307", "2308", "2309", "2310"];
-
+  public dates = ["2201", "2202", "2203","2204", "2205", "2206", "2207", "2208", "2209", "2210", "2211", "2211", "2212", "2213", "2214", "2215", "2216", "2217", "2218", "2219", "2220", "2221", "2222", "2223", "2224", "2225", "2226", "2227", "2228", "2229", "2230", "2231", "2232", "2233", "2234", "2235", "2236", "2237", "2238", "2239", "2240", "2241", "2242", "2243", "2244", "2245", "2246", "2247", "2248", "2249", "2250", "2251", "2252", "2253", "2301", "2302", "2303", "2304", "2305", "2306", "2307", "2308", "2309", "2310",
+  "2311", "2312", "2313", "2314", "2315", "2316", "2317", "2318", "2319", "2320",
+  "2321", "2322", "2323", "2324", "2325", "2326", "2327", "2328", "2329", "2330",
+  "2331", "2332", "2333", "2334", "2335", "2336", "2337", "2338", "2339", "2340",
+  "2341", "2342", "2343", "2344", "2345", "2346", "2347", "2348", "2349", "2350",
+  "2351", "2352"];
   public model = new Hero('https://www.example.com', '', '', '', '', '', '?', '', '', '');
   public regexWhitespace = /\s/;
   public hyperlink: string | undefined;
