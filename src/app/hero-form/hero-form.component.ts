@@ -20,7 +20,7 @@ export class HeroFormComponent {
   public hexCodes = ["c-loc", "c-bev", "c-chem", "cw-ww", "c-ecp", "c-env", "c-food", "c-indo", "c-pha", "c-pnp", "c-sna"];
   public mccCodes = ["c-ag", "c-ind", "c-mult", "cw-muni", "c-ong", "c-steam", "c-tele"];
   public ottCodes = ["c-aquarius", "c-brand", "c-eco", "c-erm", "c-ermaqi", "c-flood", "c-floodaqi","c-hydro", "c-hydroandmet", "c-met", "c-multi", "c-road", "c-smp", "c-smp15", "c-solared", "c-solarepc", "c-solargen", "c-swq", "c-ufw"];
-  public pallCodes = ["c-amsc", "c-con", "c-congol", "c-conun", "c-dpr", "c-ind", "c-indi", "c-indmo", "c-min", "c-mobwater", "c-muni", "c-munmob", "c-serv", "c-wbnr"];
+  public pallCodes = ["c-amsc", "c-con", "c-congol", "c-conun", "c-dpr", "c-ind", "c-indi", "c-indmo", "c-min", "c-mobwater", "c-mult", "c-muni", "c-munmob", "c-serv", "c-wbnr"];
   public seabirdCodes = ["c-argo", "c-auvrov", "c-brand", "c-eco", "c-is", "c-moor", "c-mult", "c-ooxx", "c-ph", "c-radio", "c-sbe", "c-serv"];
   public trojCodes = ["c-amps", "c-dw", "c-ect", "c-mult", "c-serv", "c-wwchl", "c-wwgreen", "c-wwreuse", "c-wwuv"];
   public viquaCodes = ["c-deal", "c-end", "c-eng", "c-home", "c-hosp", "c-lc", "c-mult", "c-oem", "c-prof", "c-sev", "c-singt", "c-ws", "c-wti", "c-ret"];
@@ -51,7 +51,7 @@ export class HeroFormComponent {
   newHero() {
     this.updateVariables();
     this.initialView = true;
-    this.model = new Hero('', '', '', '', '', '', '', '', '');
+    this.model = new Hero('https://www.example.com', '', '', '', '', '', '?', '', '', '');
     }
 
 onPaste(event: any, input: string | undefined){
@@ -61,7 +61,7 @@ onPaste(event: any, input: string | undefined){
      if(this.regex.test(this.pastedText)){
       return true;
      }else if(!this.regex.test(this.pastedText)){
-      this._toastr.error("Special characters and spaces not allowed: [$&+,:;=?@#|'<>.^*( )%! { }]. Alphanumeric English characters only.");
+      this._toastr.error("Special characters and spaces not allowed. Alphanumeric English characters only.");
      return false;
   }
 }
