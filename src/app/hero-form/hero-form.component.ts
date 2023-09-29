@@ -12,26 +12,60 @@ import { NgForm } from '@angular/forms';
 
 export class HeroFormComponent {
 
-  public opcos = ["aqua", "ets", "hach", "hex", "mcc", "ott", "pall", "seabird", "troj", "viqua", "xos" ];
+  public opcos = ["ariafiltra", "aqi", "aqua", "ets", "hach", "hex", "mcc", "ott", "seabird", "troj", "viqua", "xos" ];
   public campaigns = [""];
+  public aqiCodes = ["foo", "bar", "baz"];
   public aquaCodes = ["c-met", "c-all", "c-amps", "c-aqua", "c-dairy", "c-eng", "c-fnb", "c-lifesci", "c-marine", "c-micro", "c-ong", "c-power", "c-recwat", "c-serv", "c-ww"];
   public etsCodes = ["aqua", "dpd"];
   public hachCodes = ["c-bev", "c-chem", "c-dicom", "c-dist", "c-dw", "c-ecp", "c-flow", "c-food", "c-ind", "c-loc", "c-mult", "c-north", "c-pwr", "c-soft", "c-south", "c-termo", "c-voc", "c-web", "c-ww"];
   public hexCodes = ["c-loc", "c-bev", "c-chem", "cw-ww", "c-ecp", "c-env", "c-food", "c-indo", "c-pha", "c-pnp", "c-sna"];
   public mccCodes = ["c-ag", "c-ind", "c-mult", "cw-muni", "c-ong", "c-steam", "c-tele"];
   public ottCodes = ["c-aquarius", "c-brand", "c-eco", "c-erm", "c-ermaqi", "c-flood", "c-floodaqi","c-hydro", "c-hydroandmet", "c-met", "c-multi", "c-road", "c-smp", "c-smp15", "c-solared", "c-solarepc", "c-solargen", "c-swq", "c-ufw"];
-  public pallCodes = ["c-amsc", "c-con", "c-congol", "c-conun", "c-dpr", "c-ind", "c-indi", "c-indmo", "c-min", "c-mobwater", "c-mult", "c-muni", "c-munmob", "c-serv", "c-wbnr"];
+  public ariafiltraCodes = ["c-amsc", "c-con", "c-congol", "c-conun", "c-dpr", "c-ind", "c-indi", "c-indmo", "c-min", "c-mobwater", "c-mult", "c-muni", "c-munmob", "c-serv", "c-wbnr"];
   public seabirdCodes = ["c-argo", "c-auvrov", "c-brand", "c-eco", "c-is", "c-moor", "c-mult", "c-ooxx", "c-ph", "c-radio", "c-sbe", "c-serv"];
   public trojCodes = ["c-amps", "c-dw", "c-ect", "c-mult", "c-serv", "c-wwchl", "c-wwgreen", "c-wwreuse", "c-wwuv"];
   public viquaCodes = ["c-deal", "c-end", "c-eng", "c-home", "c-hosp", "c-lc", "c-mult", "c-oem", "c-prof", "c-sev", "c-singt", "c-ws", "c-wti", "c-ret"];
   public xosCodes = ["c-cp", "c-oem", "c-petro", "c-water"];
+  public aqiSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public aquaSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public etsSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public hachSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public hexSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public mccSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public ottSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public ariafiltraSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public seabirdSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public trojanSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public viquaSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public xosSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
   public mediums = ["banner", "blog", "cpc", "email","microsite", "podcast", "pr", "qr", "social", "social-paid"];
-  public dates = ["2201", "2202", "2203","2204", "2205", "2206", "2207", "2208", "2209", "2210", "2211", "2211", "2212", "2213", "2214", "2215", "2216", "2217", "2218", "2219", "2220", "2221", "2222", "2223", "2224", "2225", "2226", "2227", "2228", "2229", "2230", "2231", "2232", "2233", "2234", "2235", "2236", "2237", "2238", "2239", "2240", "2241", "2242", "2243", "2244", "2245", "2246", "2247", "2248", "2249", "2250", "2251", "2252", "2253", "2301", "2302", "2303", "2304", "2305", "2306", "2307", "2308", "2309", "2310",
+  public dates = 
+  ["2301", "2302", "2303", "2304", "2305", "2306", "2307", "2308", "2309", "2310",
   "2311", "2312", "2313", "2314", "2315", "2316", "2317", "2318", "2319", "2320",
   "2321", "2322", "2323", "2324", "2325", "2326", "2327", "2328", "2329", "2330",
   "2331", "2332", "2333", "2334", "2335", "2336", "2337", "2338", "2339", "2340",
   "2341", "2342", "2343", "2344", "2345", "2346", "2347", "2348", "2349", "2350",
-  "2351", "2352"];
+  "2351", "2352",
+  "2401", "2402", "2403", "2404", "2405", "2406", "2407", "2408", "2409", "2410",
+  "2411", "2412", "2413", "2414", "2415", "2416", "2417", "2418", "2419", "2420",
+  "2421", "2422", "2423", "2424", "2425", "2426", "2427", "2428", "2429", "2430",
+  "2431", "2432", "2433", "2434", "2435", "2436", "2437", "2438", "2439", "2440",
+  "2441", "2442", "2443", "2444", "2445", "2446", "2447", "2448", "2449", "2450",
+  "2451", "2452", "2453",
+  "2501", "2502", "2503", "2504", "2505", "2506", "2507", "2508", "2509", "2510",
+  "2511", "2512", "2513", "2514", "2515", "2516", "2517", "2518", "2519", "2520",
+  "2521", "2522", "2523", "2524", "2525", "2526", "2527", "2528", "2529", "2530",
+  "2531", "2532", "2533", "2534", "2535", "2536", "2537", "2538", "2539", "2540",
+  "2541", "2542", "2543", "2544", "2545", "2546", "2547", "2548", "2549", "2550",
+  "2551", "2552", "2553",
+  "2601", "2602", "2603", "2604", "2605", "2606", "2607", "2608", "2609", "2610",
+  "2611", "2612", "2613", "2614", "2615", "2616", "2617", "2618", "2619", "2620",
+  "2621", "2622", "2623", "2624", "2625", "2626", "2627", "2628", "2629", "2630",
+  "2631", "2632", "2633", "2634", "2635", "2636", "2637", "2638", "2639", "2640",
+  "2641", "2642", "2643", "2644", "2645", "2646", "2647", "2648", "2649", "2650",
+  "2651", "2652", "2653"
+];
+
   public model = new Hero('https://www.example.com', '', '', '', '', '', '?', '', '', '');
   public regexWhitespace = /\s/;
   public hyperlink: string | undefined;
@@ -121,13 +155,14 @@ omitSpecialChar(event: { charCode: any; }){
 
   public opcoSelectedHach = false;
   public opcoSelectedAqua = false;
+  public opcoSelectedAqi = false;
   public opcoSelectedEts = false;
   public opcoSelectedHex = false;
   public opcoSelectedMcc = false;
   public opcoSelectedOtt = false;
-  public opcoSelectedPall = false;
+  public opcoSelectedAriafiltra = false;
   public opcoSelectedSeabird = false;
-  public opcoSelectedTroj = false;
+  public opcoSelectedTrojan = false;
   public opcoSelectedViqua = false;
   public opcoSelectedXos = false;
 
@@ -138,13 +173,14 @@ omitSpecialChar(event: { charCode: any; }){
     this.initialView = false; 
     this.opcoSelectedHach = false;
     this.opcoSelectedAqua = false;
+    this.opcoSelectedAqi = false;
     this.opcoSelectedEts = false;
     this.opcoSelectedHex = false;
     this.opcoSelectedMcc = false;
     this.opcoSelectedOtt = false;
-    this.opcoSelectedPall = false;
+    this.opcoSelectedAriafiltra = false;
     this.opcoSelectedSeabird = false;
-    this.opcoSelectedTroj = false;
+    this.opcoSelectedTrojan = false;
     this.opcoSelectedViqua = false;
     this.opcoSelectedXos = false;
   }
@@ -158,6 +194,10 @@ omitSpecialChar(event: { charCode: any; }){
     if(value === "aqua"){
       this.updateVariables()
       return this.opcoSelectedAqua = true;
+    };
+    if(value === "aqi"){
+      this.updateVariables()
+      return this.opcoSelectedAqi = true;
     };
     if(value === "ets"){
       this.updateVariables()
@@ -175,9 +215,9 @@ omitSpecialChar(event: { charCode: any; }){
       this.updateVariables()
       return this.opcoSelectedOtt = true;
     };
-    if(value === "pall"){
+    if(value === "ariafiltra"){
       this.updateVariables()
-      return this.opcoSelectedPall = true;
+      return this.opcoSelectedAriafiltra = true;
     };
     if(value === "seabird"){
       this.updateVariables()
@@ -185,7 +225,7 @@ omitSpecialChar(event: { charCode: any; }){
     };
     if(value === "troj"){
       this.updateVariables()
-      return this.opcoSelectedTroj = true;
+      return this.opcoSelectedTrojan = true;
     };
     if(value === "viqua"){
       this.updateVariables()

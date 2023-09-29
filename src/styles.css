@@ -32,6 +32,10 @@ input#utmLinkReadonly {
   width: 11.5%;
   text-align: center;
 }
+.span_1_of_4mine {
+  width: 11.5%;
+  text-align: center;
+}
 img.imgWidth {
   width: 115px;
 }

@@ -96,24 +96,38 @@
         </select>
        
       </div></div>
-     
+    
+    <!-- Begin ARIAFILTRA CAMPAIGNS -->
+       <div *ngIf="opcoSelectedAriafiltra" class="campaigns">
+        <div class="form-group">
+          <label for="campaign">2. Aria Filtra Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+          <select class="form-control" id="campaignAriafiltra"
+                  required
+                  [(ngModel)]="model.campaign" name="campaign"
+                  #campaign="ngModel">
+                  <option value="" disabled selected> Choose... </option>
+            <option *ngFor="let campaign of ariafiltraCodes" [value]="campaign">{{campaign}}</option>
+          </select>
+        </div>
+      </div>
+    <!-- End ARIAFILTRA CAMPAIGNS -->
 
-      <div *ngIf="opcoSelectedHach" class="campaigns">
+    <!-- Begin AQI CAMPAIGNS -->
+    <div *ngIf="opcoSelectedAqi" class="campaigns">
       <div class="form-group">
-        <label for="campaign">2. Hach Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
-        <select class="form-control" id="campaignHach"
+        <label for="campaign">2. AQI Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+        <select class="form-control" id="campaignAqi"
                 required
                 [(ngModel)]="model.campaign" name="campaign"
-                #campaign="ngModel"
-                (change)="changeWebsite(campaign.value)">
+                #campaign="ngModel">
                 <option value="" disabled selected> Choose... </option>
-          <option *ngFor="let campaign of hachCodes" [value]="campaign">{{campaign}}</option>
-          
+          <option *ngFor="let campaign of aqiCodes" [value]="campaign">{{campaign}}</option>
         </select>
-      
       </div>
     </div>
+    <!-- End AQI CAMPAIGNS -->
 
+    <!-- Begin AQUAFINE CAMPAIGNS -->
     <div *ngIf="opcoSelectedAqua" class="campaigns">
       <div class="form-group">
         <label for="campaign">2. Aquafine Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
@@ -124,10 +138,11 @@
                 <option value="" disabled selected> Choose... </option>
           <option *ngFor="let campaign of aquaCodes" [value]="campaign">{{campaign}}</option>
         </select>
-        
       </div>
     </div>
+    <!-- End AQUAFINE CAMPAIGNS -->
     
+    <!-- Begin ETS CAMPAIGNS -->
     <div *ngIf="opcoSelectedEts" class="campaigns">
       <div class="form-group">
         <label for="campaign">2. Ets Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
@@ -138,10 +153,27 @@
                 <option value="" disabled selected> Choose... </option>
           <option *ngFor="let campaign of etsCodes" [value]="campaign">{{campaign}}</option>
         </select>
-        
       </div>
     </div>
+    <!-- End ETS CAMPAIGNS -->
 
+     <!-- Begin HACH CAMPAIGNS -->
+     <div *ngIf="opcoSelectedHach" class="campaigns">
+      <div class="form-group">
+        <label for="campaign">2. Hach Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
+        <select class="form-control" id="campaignHach"
+                required
+                [(ngModel)]="model.campaign" name="campaign"
+                #campaign="ngModel"
+                (change)="changeWebsite(campaign.value)">
+                <option value="" disabled selected> Choose... </option>
+          <option *ngFor="let campaign of hachCodes" [value]="campaign">{{campaign}}</option>
+        </select>
+      </div>
+    </div>
+    <!-- End HACH CAMPAIGNS -->
+
+    <!-- Begin HEX CAMPAIGNS -->
       <div *ngIf="opcoSelectedHex" class="campaigns">
         <div class="form-group">
           <label for="campaign">2. Hex Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
@@ -152,10 +184,11 @@
                   <option value="" disabled selected> Choose... </option>
             <option *ngFor="let campaign of hexCodes" [value]="campaign">{{campaign}}</option>
           </select>
-          
         </div>
       </div>
+    <!-- End HEX CAMPAIGNS -->
 
+    <!-- Begin MCCROMETER CAMPAIGNS -->
       <div *ngIf="opcoSelectedMcc" class="campaigns">
         <div class="form-group">
           <label for="campaign">2. McCrometer Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
@@ -166,10 +199,11 @@
                   <option value="" disabled selected> Choose... </option>
             <option *ngFor="let campaign of mccCodes" [value]="campaign">{{campaign}}</option>
           </select>
-          
         </div>
       </div>
+    <!-- End MCCROMETER CAMPAIGNS -->
 
+    <!-- Begin OTT CAMPAIGNS -->
       <div *ngIf="opcoSelectedOtt" class="campaigns">
         <div class="form-group">
           <label for="campaign">2. Ott Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
@@ -180,24 +214,11 @@
                   <option value="" disabled selected> Choose... </option>
             <option *ngFor="let campaign of ottCodes" [value]="campaign">{{campaign}}</option>
           </select>
-          
         </div>
       </div>
+    <!-- End OTT CAMPAIGNS -->
 
-      <div *ngIf="opcoSelectedPall" class="campaigns">
-        <div class="form-group">
-          <label for="campaign">2. Pall Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
-          <select class="form-control" id="campaignPall"
-                  required
-                  [(ngModel)]="model.campaign" name="campaign"
-                  #campaign="ngModel">
-                  <option value="" disabled selected> Choose... </option>
-            <option *ngFor="let campaign of pallCodes" [value]="campaign">{{campaign}}</option>
-          </select>
-          
-        </div>
-      </div>
-
+    <!-- Begin SEABIRD CAMPAIGNS -->
       <div *ngIf="opcoSelectedSeabird" class="campaigns">
         <div class="form-group">
           <label for="campaign">2. Seabird Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
@@ -208,11 +229,12 @@
                   <option value="" disabled selected> Choose... </option>
             <option *ngFor="let campaign of seabirdCodes" [value]="campaign">{{campaign}}</option>
           </select>
-          
         </div>
       </div>
+    <!-- End SEABIRD CAMPAIGNS -->
 
-      <div *ngIf="opcoSelectedTroj" class="campaigns">
+    <!-- Begin TROJAN CAMPAIGNS -->
+      <div *ngIf="opcoSelectedTrojan" class="campaigns">
         <div class="form-group">
           <label for="campaign">2. Trojan Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
           <select class="form-control" id="campaignTroj"
@@ -222,10 +244,11 @@
                   <option value="" disabled selected> Choose... </option>
             <option *ngFor="let campaign of trojCodes" [value]="campaign">{{campaign}}</option>
           </select>
-          
         </div>
       </div>
+    <!-- End TROJAN CAMPAIGNS -->
 
+    <!-- Begin VIQUA CAMPAIGNS -->
       <div *ngIf="opcoSelectedViqua" class="campaigns">
         <div class="form-group">
           <label for="campaign">2. Viqua Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
@@ -236,10 +259,11 @@
                   <option value="" disabled selected> Choose... </option>
             <option *ngFor="let campaign of viquaCodes" [value]="campaign">{{campaign}}</option>
           </select>
-          
         </div>
       </div>
+    <!-- End VIQUA CAMPAIGNS -->
 
+    <!-- Begin XOS CAMPAIGNS -->
       <div *ngIf="opcoSelectedXos" class="campaigns">
         <div class="form-group">
           <label for="campaign">2. XOS Campaign Code<span [hidden]="campaign.valid" style="color: red;font-size:small;font-weight:400;font-style:oblique;margin-left: 20px;">  Enter a value</span></label> 
@@ -250,10 +274,9 @@
                   <option value="" disabled selected> Choose... </option>
             <option *ngFor="let campaign of xosCodes" [value]="campaign">{{campaign}}</option>
           </select>
-          
         </div>
       </div>
-
+    <!-- End XOS CAMPAIGNS -->
     
 
       <div class="form-group">
@@ -282,21 +305,34 @@
                       <option value="" disabled selected="selected">Choose... </option>
                 <option *ngFor="let date of dates" [value]="date">{{date}}</option>
               </select>
-            
             </div>
-          </div></div></div>
-          <div class="container">
-            <div class="row">
+          </div>
+        </div>
+      </div>
+    
+<!-- Begin ARIAFILTRA SOURCE -->
+      <div class="container"  *ngIf="opcoSelectedAriafiltra">
+        <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from ARIA FILTRA SOURCE list, or custom (free text, no spaces)
+          <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+        <div class="row">
           <div class="col">
             <div class="form-group">
-              <label for="source"><span style="color: red;font-size:large;font-weight:900;"> * </span>5. SOURCE - Twitter, Water-Online, etc. (free text, no spaces)
-              <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+              <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+              <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let x of ariafiltraSource"  [value]="x">{{x}}
+              </option>
+              </select>                   
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
               <input type="text" 
               ng-pattern-restrict="^[a-z0-9_-]*$" 
               (keypress)="omitSpecialChar($event)" 
               (keydown.space)="$event.preventDefault();" 
               (paste) = "onPaste($event, 'source')"
-              class="form-control" id="source"
+              class="form-control" 
+              id="source"
               [(ngModel)]="model.source"
               minlength="1"
               name="source"
@@ -306,15 +342,459 @@
               autocomplete="off"
               autocorrect="off"
               autocapitalize="none"
-              spellcheck="false">
+              spellcheck="false"
+              value="{{model.source}}"> 
             </div>
-           
           </div>
         </div>
+      </div>
+<!-- End ARIAFILTRA SOURCE -->
+
+<!-- Begin AQI SOURCE -->
+      <div class="container"  *ngIf="opcoSelectedAqi">
+        <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from AQI SOURCE list, or custom (free text, no spaces)
+          <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
         <div class="row">
           <div class="col">
             <div class="form-group">
-              <label for="optA"><span style="color: red;font-size:large;font-weight:900;"> * </span>Content: Short detail on content of tactic (free text, no spaces) - Optional</label>
+              <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+              <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let x of aqiSource"  [value]="x">{{x}}
+              </option>
+              </select>                   
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="text" 
+              ng-pattern-restrict="^[a-z0-9_-]*$" 
+              (keypress)="omitSpecialChar($event)" 
+              (keydown.space)="$event.preventDefault();" 
+              (paste) = "onPaste($event, 'source')"
+              class="form-control" 
+              id="source"
+              [(ngModel)]="model.source"
+              minlength="1"
+              name="source"
+              (ngModelChange)="ConvertToLower($event, 'source')" 
+              required 
+              #source="ngModel"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="none"
+              spellcheck="false"
+              value="{{model.source}}"> 
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End AQI SOURCE -->
+
+<!-- Begin AQUA SOURCE -->
+      <div class="container"  *ngIf="opcoSelectedAqua">
+        <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from Aquafine SOURCE list, or custom (free text, no spaces)
+          <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+              <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let x of aquaSource"  [value]="x">{{x}}
+              </option>
+              </select>                   
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="text" 
+              ng-pattern-restrict="^[a-z0-9_-]*$" 
+              (keypress)="omitSpecialChar($event)" 
+              (keydown.space)="$event.preventDefault();" 
+              (paste) = "onPaste($event, 'source')"
+              class="form-control" 
+              id="source"
+              [(ngModel)]="model.source"
+              minlength="1"
+              name="source"
+              (ngModelChange)="ConvertToLower($event, 'source')" 
+              required 
+              #source="ngModel"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="none"
+              spellcheck="false"
+              value="{{model.source}}"> 
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End AQUA SOURCE -->
+
+<!-- Begin ETS SOURCE -->
+      <div class="container"  *ngIf="opcoSelectedEts">
+        <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from ETS SOURCE list, or custom (free text, no spaces)
+          <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+              <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let x of aqiSource"  [value]="x">{{x}}
+              </option>
+              </select>                   
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="text" 
+              ng-pattern-restrict="^[a-z0-9_-]*$" 
+              (keypress)="omitSpecialChar($event)" 
+              (keydown.space)="$event.preventDefault();" 
+              (paste) = "onPaste($event, 'source')"
+              class="form-control" 
+              id="source"
+              [(ngModel)]="model.source"
+              minlength="1"
+              name="source"
+              (ngModelChange)="ConvertToLower($event, 'source')" 
+              required 
+              #source="ngModel"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="none"
+              spellcheck="false"
+              value="{{model.source}}"> 
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End ETS SOURCE -->
+
+<!-- Begin HACH SOURCE -->
+      <div class="container"  *ngIf="opcoSelectedHach">
+        <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from HACH SOURCE list, or custom (free text, no spaces)
+          <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+              <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let x of hachSource"  [value]="x">{{x}}
+              </option>
+              </select>                   
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="text" 
+              ng-pattern-restrict="^[a-z0-9_-]*$" 
+              (keypress)="omitSpecialChar($event)" 
+              (keydown.space)="$event.preventDefault();" 
+              (paste) = "onPaste($event, 'source')"
+              class="form-control" 
+              id="source"
+              [(ngModel)]="model.source"
+              minlength="1"
+              name="source"
+              (ngModelChange)="ConvertToLower($event, 'source')" 
+              required 
+              #source="ngModel"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="none"
+              spellcheck="false"
+              value="{{model.source}}"> 
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End HACH SOURCE -->
+
+<!-- Begin HEX SOURCE -->
+      <div class="container"  *ngIf="opcoSelectedHex">
+        <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from HEX SOURCE list, or custom (free text, no spaces)
+          <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+              <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let x of hexSource"  [value]="x">{{x}}
+              </option>
+              </select>                   
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="text" 
+              ng-pattern-restrict="^[a-z0-9_-]*$" 
+              (keypress)="omitSpecialChar($event)" 
+              (keydown.space)="$event.preventDefault();" 
+              (paste) = "onPaste($event, 'source')"
+              class="form-control" 
+              id="source"
+              [(ngModel)]="model.source"
+              minlength="1"
+              name="source"
+              (ngModelChange)="ConvertToLower($event, 'source')" 
+              required 
+              #source="ngModel"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="none"
+              spellcheck="false"
+              value="{{model.source}}"> 
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End HEX SOURCE -->
+
+<!-- Begin MCC SOURCE -->
+      <div class="container"  *ngIf="opcoSelectedMcc">
+        <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from MCCROMETER SOURCE list, or custom (free text, no spaces)
+          <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+              <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let x of mccSource"  [value]="x">{{x}}
+              </option>
+              </select>                   
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="text" 
+              ng-pattern-restrict="^[a-z0-9_-]*$" 
+              (keypress)="omitSpecialChar($event)" 
+              (keydown.space)="$event.preventDefault();" 
+              (paste) = "onPaste($event, 'source')"
+              class="form-control" 
+              id="source"
+              [(ngModel)]="model.source"
+              minlength="1"
+              name="source"
+              (ngModelChange)="ConvertToLower($event, 'source')" 
+              required 
+              #source="ngModel"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="none"
+              spellcheck="false"
+              value="{{model.source}}"> 
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End MCC SOURCE -->
+
+<!-- Begin OTT SOURCE -->
+      <div class="container"  *ngIf="opcoSelectedOtt">
+        <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from OTT SOURCE list, or custom (free text, no spaces)
+          <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+              <option value="" disabled selected> Choose... </option>
+              <option *ngFor="let x of ottSource"  [value]="x">{{x}}
+              </option>
+              </select>                   
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input type="text" 
+              ng-pattern-restrict="^[a-z0-9_-]*$" 
+              (keypress)="omitSpecialChar($event)" 
+              (keydown.space)="$event.preventDefault();" 
+              (paste) = "onPaste($event, 'source')"
+              class="form-control" 
+              id="source"
+              [(ngModel)]="model.source"
+              minlength="1"
+              name="source"
+              (ngModelChange)="ConvertToLower($event, 'source')" 
+              required 
+              #source="ngModel"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="none"
+              spellcheck="false"
+              value="{{model.source}}"> 
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- End OTT SOURCE -->
+
+<!-- Begin SEABIRD SOURCE -->
+<div class="container"  *ngIf="opcoSelectedSeabird">
+  <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from SEABIRD SOURCE list, or custom (free text, no spaces)
+    <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+        <option value="" disabled selected> Choose... </option>
+        <option *ngFor="let x of seabirdSource"  [value]="x">{{x}}
+        </option>
+        </select>                   
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <input type="text" 
+        ng-pattern-restrict="^[a-z0-9_-]*$" 
+        (keypress)="omitSpecialChar($event)" 
+        (keydown.space)="$event.preventDefault();" 
+        (paste) = "onPaste($event, 'source')"
+        class="form-control" 
+        id="source"
+        [(ngModel)]="model.source"
+        minlength="1"
+        name="source"
+        (ngModelChange)="ConvertToLower($event, 'source')" 
+        required 
+        #source="ngModel"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="none"
+        spellcheck="false"
+        value="{{model.source}}"> 
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End SEABIRD SOURCE -->
+
+<!-- Begin TROJAN SOURCE -->
+<div class="container"  *ngIf="opcoSelectedTrojan">
+  <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from TROJAN SOURCE list, or custom (free text, no spaces)
+    <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+        <option value="" disabled selected> Choose... </option>
+        <option *ngFor="let x of trojanSource"  [value]="x">{{x}}
+        </option>
+        </select>                   
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <input type="text" 
+        ng-pattern-restrict="^[a-z0-9_-]*$" 
+        (keypress)="omitSpecialChar($event)" 
+        (keydown.space)="$event.preventDefault();" 
+        (paste) = "onPaste($event, 'source')"
+        class="form-control" 
+        id="source"
+        [(ngModel)]="model.source"
+        minlength="1"
+        name="source"
+        (ngModelChange)="ConvertToLower($event, 'source')" 
+        required 
+        #source="ngModel"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="none"
+        spellcheck="false"
+        value="{{model.source}}"> 
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End TROJAN SOURCE -->
+
+<!-- Begin VIQUA SOURCE -->
+<div class="container"  *ngIf="opcoSelectedViqua">
+  <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from VIQUA SOURCE list, or custom (free text, no spaces)
+    <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+        <option value="" disabled selected> Choose... </option>
+        <option *ngFor="let x of viquaSource"  [value]="x">{{x}}
+        </option>
+        </select>                   
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <input type="text" 
+        ng-pattern-restrict="^[a-z0-9_-]*$" 
+        (keypress)="omitSpecialChar($event)" 
+        (keydown.space)="$event.preventDefault();" 
+        (paste) = "onPaste($event, 'source')"
+        class="form-control" 
+        id="source"
+        [(ngModel)]="model.source"
+        minlength="1"
+        name="source"
+        (ngModelChange)="ConvertToLower($event, 'source')" 
+        required 
+        #source="ngModel"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="none"
+        spellcheck="false"
+        value="{{model.source}}"> 
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End VIQUA SOURCE -->
+
+<!-- Begin XOS SOURCE -->
+<div class="container"  *ngIf="opcoSelectedXos">
+  <label for="source" style="text-align: left;"><span style="color: #0d6efd;font-size:large;font-weight:900;text-align: left;"> * </span>5. Choose from XOS SOURCE list, or custom (free text, no spaces)
+    <span [hidden]="source.valid" ng-show="form.source.$error.pattern" style="color: red;font-size:small;font-weight:400;font-style:italic;margin-left: 25px;"> Enter a value</span></label>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <select [(ngModel)]="model.source" id="source" class="form-control" name="source" #source="ngModel">
+        <option value="" disabled selected> Choose... </option>
+        <option *ngFor="let x of xosSource"  [value]="x">{{x}}
+        </option>
+        </select>                   
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <input type="text" 
+        ng-pattern-restrict="^[a-z0-9_-]*$" 
+        (keypress)="omitSpecialChar($event)" 
+        (keydown.space)="$event.preventDefault();" 
+        (paste) = "onPaste($event, 'source')"
+        class="form-control" 
+        id="source"
+        [(ngModel)]="model.source"
+        minlength="1"
+        name="source"
+        (ngModelChange)="ConvertToLower($event, 'source')" 
+        required 
+        #source="ngModel"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="none"
+        spellcheck="false"
+        value="{{model.source}}"> 
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End XOS SOURCE -->
+      
+<div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="optA"><span style="color: #0d6efd;font-size:large;font-weight:900;"> * </span>Content: Short detail on content of tactic (free text, no spaces) - Optional</label>
               <input type="text" 
               class="form-control" 
               id="optA"
@@ -326,15 +806,15 @@
               (keypress)="omitSpecialChar($event)" 
               (paste) = "onPaste($event, 'optA')"
               autocomplete="off"
-       autocorrect="off"
-       autocapitalize="none"
-       spellcheck="false"
-       ng-model-options="{ allowInvalid: true }">
+              autocorrect="off"
+              autocapitalize="none"
+              spellcheck="false"
+              ng-model-options="{ allowInvalid: true }">
             </div>
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="optB"><span style="color: red;font-size:large;font-weight:900;"> * </span>Campaign Detail: Additional campaign specifics (free text, no spaces) - Optional</label>
+              <label for="optB"><span style="color: #0d6efd;font-size:large;font-weight:900;"> * </span>Campaign Detail: Additional campaign specifics (free text, no spaces) - Optional</label>
               <input type="text" 
               class="form-control" 
               id="optB"
@@ -356,7 +836,7 @@
         </div>
         <div class="row">
           <div class="col" style="text-align: left;">
-        <span style="color: red;font-weight: 500; margin-top: -10px;font-size:medium;"> * </span><span style="color: red;font-size:small;font-weight: 500;">Use alphanumeric values, only (except "_" or "-")</span>
+        <span style="color: #0d6efd;font-weight: 500; margin-top: -10px;font-size:medium;"> * </span><span style="color: #0d6efd;font-size:small;font-weight: 500;">Use alphanumeric values, only (except "_" or "-")</span>
         </div></div>
       </div>
      <br />

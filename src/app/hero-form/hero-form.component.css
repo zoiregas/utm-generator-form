@@ -7,7 +7,7 @@ a {
     text-align: left;
   }
   label {
-    display: inline-block;
+    display: block;
     font-size: 18px;
     font-weight: 500;
   }
