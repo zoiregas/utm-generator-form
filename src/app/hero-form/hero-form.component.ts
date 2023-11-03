@@ -14,13 +14,13 @@ export class HeroFormComponent {
 
   public opcos = ["ariafiltra", "aqi", "aqua", "ets", "hach", "hex", "mcc", "ott", "seabird", "troj", "viqua", "xos" ];
   public campaigns = [""];
-  public aqiCodes = ["foo", "bar", "baz"];
+  public aqiCodes = ["aqi-undefined-value-1", "aqi-undefined-value-2"];
   public aquaCodes = ["c-met", "c-all", "c-amps", "c-aqua", "c-dairy", "c-eng", "c-fnb", "c-lifesci", "c-marine", "c-micro", "c-ong", "c-power", "c-recwat", "c-serv", "c-ww"];
   public etsCodes = ["aqua", "dpd"];
   public hachCodes = ["c-bev", "c-chem", "c-dicom", "c-dist", "c-dw", "c-ecp", "c-flow", "c-food", "c-ind", "c-loc", "c-mult", "c-north", "c-pwr", "c-soft", "c-south", "c-termo", "c-voc", "c-web", "c-ww"];
   public hexCodes = ["c-loc", "c-bev", "c-chem", "cw-ww", "c-ecp", "c-env", "c-food", "c-indo", "c-pha", "c-pnp", "c-sna"];
   public mccCodes = ["c-ag", "c-ind", "c-mult", "cw-muni", "c-ong", "c-steam", "c-tele"];
-  public ottCodes = ["c-aquarius", "c-brand", "c-eco", "c-erm", "c-ermaqi", "c-flood", "c-floodaqi","c-hydro", "c-hydroandmet", "c-met", "c-multi", "c-road", "c-smp", "c-smp15", "c-solared", "c-solarepc", "c-solargen", "c-swq", "c-ufw"];
+  public ottCodes = ["c-aquarius", "c-brand", "c-eco", "c-erm", "c-ermaqi", "c-flood", "c-floodaqi","c-hydro", "c-hydroandmet", "c-met", "c-multi", "c-road", "c-smp", "c-smp12", "c-solared", "c-solarepc", "c-solargen", "c-swq", "c-ufw"];
   public ariafiltraCodes = ["c-amsc", "c-con", "c-congol", "c-conun", "c-dpr", "c-ind", "c-indi", "c-indmo", "c-min", "c-mobwater", "c-mult", "c-muni", "c-munmob", "c-serv", "c-wbnr"];
   public seabirdCodes = ["c-argo", "c-auvrov", "c-brand", "c-eco", "c-is", "c-moor", "c-mult", "c-ooxx", "c-ph", "c-radio", "c-sbe", "c-serv"];
   public trojCodes = ["c-amps", "c-dw", "c-ect", "c-mult", "c-serv", "c-wwchl", "c-wwgreen", "c-wwreuse", "c-wwuv"];
@@ -34,7 +34,7 @@ export class HeroFormComponent {
   public mccSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
   public ottSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
   public ariafiltraSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
-  public seabirdSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
+  public seabirdSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature", "training"];
   public trojanSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
   public viquaSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
   public xosSource = ["google", "bing", "marketo", "linkedin", "googleads", "facebook", "youtube", "yahoo", "baidu", "e-signature"];
