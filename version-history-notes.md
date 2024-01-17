@@ -44,4 +44,35 @@ Edit Notes:
 			Updated index.html footer to include OpCos Pall, USP Technologies and XOS
 
 9/23/2022 - Added "Blog" to the drop list of Mediums (Wrike ticket: https://www.wrike.com/open.htm?id=968053723)
-6/8/2023 - Added McCrometer and Trojan  Campaign Code with the value 'c-mult', also extended date weeks to 2024 (Wrike ticket: https://www.wrike.com/open.htm?id=1126846600)			    			
+6/8/2023 - Version 1.0 - Added McCrometer Campaign Code with the value c-mult (Wrike ticket: https://www.wrike.com/open.htm?id=1126846600)
+7/12/2023 - Version 1.1 - Added Pall Campaign Code with the value c-mult (Wrike ticket: https://www.wrike.com/open.htm?id=1152392505)	
+9/20/23 - Version 1.2 - 
+								1. Added more YYWW values through 2301 => 2653
+								2. added pre-defined values by OpCo for SOURCE while providing optional free text field
+								3. Pall water => Aria Filtra
+								4. Updated footer => Water Quality segment instead of Platform
+								5. removed Pall water logo from footer
+								6. Changed astersiks from red to blue
+								7. Added AQI OpCo to list
+								
+							
+							
+10/20/23 - Version 1.2.1 
+								1. Changed Water Quality segment to Veralto Water Quality
+								2. Added note on top under title, "Contact your strategist..."
+								3. Added placeholder values for AQI Campaign code		
+								
+11/2/23 - Version 1.2.2
+								1. changed the Campaign code: c-smp15 to c-smp12 (1 instance under OTT)
+								2. Added "training" to Seabird SOURCE codes list
+
+01/02/24 - Version 1.2.3
+								1. OTT campaign codes updated from (old):
+									public ottCodes = ["c-aquarius", "c-brand", "c-eco", "c-erm", "c-ermaqi", "c-flood", "c-floodaqi","c-hydro", "c-hydroandmet", "c-met", "c-multi", "c-road", "c-smp", "c-smp12", "c-solared", "c-solarepc", "c-solargen", "c-swq", "c-ufw"];
+
+									to (new):
+									public ottCodes = ["c-brand", "c-flood", "c-hydro", "c-hydroandmet", "c-met", "c-multi", "c-road", "c-solar", "c-solarepc"];
+
+								2. Updated links to WQ Opcos to local folder; uploaded image files
+
+									(Wrike tickets: https://www.wrike.com/open.htm?id=1271529042 & https://www.wrike.com/open.htm?id=1263055977)
