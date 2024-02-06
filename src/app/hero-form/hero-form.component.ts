@@ -14,7 +14,7 @@ export class HeroFormComponent {
 
   public opcos = ["ariafiltra", "aqi", "aqua", "ets", "hach", "hex", "mcc", "ott", "seabird", "troj", "viqua", "xos" ];
   public campaigns = [""];
-  public aqiCodes = ["aqi-undefined-value-1", "aqi-undefined-value-2"];
+  public aqiCodes = ["c-aca", "c-muni", "c-gov", "c-dw", "c-ww", "c-epa", "c-np", "c-cust", "c-ind", "c-mining", "c-voc", "c-multi", "c-env"];
   public aquaCodes = ["c-met", "c-all", "c-amps", "c-aqua", "c-dairy", "c-eng", "c-fnb", "c-lifesci", "c-marine", "c-micro", "c-ong", "c-power", "c-recwat", "c-serv", "c-ww"];
   public etsCodes = ["aqua", "dpd"];
   public hachCodes = ["c-bev", "c-chem", "c-dicom", "c-dist", "c-dw", "c-ecp", "c-flow", "c-food", "c-ind", "c-loc", "c-mult", "c-north", "c-pwr", "c-soft", "c-south", "c-termo", "c-voc", "c-web", "c-ww"];

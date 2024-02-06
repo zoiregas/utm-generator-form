@@ -76,3 +76,6 @@ Edit Notes:
 								2. Updated links to WQ Opcos to local folder; uploaded image files
 
 									(Wrike tickets: https://www.wrike.com/open.htm?id=1271529042 & https://www.wrike.com/open.htm?id=1263055977)
+02/06/24 - Version 1.2.4
+								1. Updated AQI campaign codes
+									(Wrike ticket https://www.wrike.com/open.htm?id=1292455557)
